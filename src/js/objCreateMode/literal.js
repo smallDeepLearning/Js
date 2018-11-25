@@ -17,7 +17,6 @@ var person = {
 console.log('[person]', person)
 
 /*
- * ECMA-262 <5版>
- * 定义: 描述属性(property)的各种特征(attribute)
- * 作用: 为了实现JS引擎用的，只有内部才用到的特性，在JS中不能直接访问它们。
+ * 在这个例子中，person对象与前面例子中的person对象一样，都有相同的属性和方法
+ * 这些属性在创建时都带有一些特征值: JavaScript
 */
