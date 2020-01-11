@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>构造函数继承(2)</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function Parent(mark) {
+      this.mark = mark;
+      this.names = ["炎帝", "黄帝"];
+    }
+    function Child(name) {
+      Parent.call(this, name);
+    }
+
+    var child_1 = new Child("人文初祖");
+    child_1.names.push("蚩尤");
+    console.log(child_1.mark, child_1.names);
+
+    var child_2 = new Child("华夏先祖");
+    console.log(child_2.mark, child_2.names);
+
+    // 优点: 避免了引用类型的属性被所有实例共享; 可以在Child中给Parent传参
+    // 缺点: 方法都在构造函数中定义，每次创建实例都会创建一遍方法
+  </script>
+</body>
+</html>
