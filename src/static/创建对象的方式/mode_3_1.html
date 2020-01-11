@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原型模式(1)</title>
+</head>
+<body>
+  <script type="text/javascript">
+    "use strict";
+    function Person() {
+    }
+    Person.prototype.name = "小明";
+    Person.prototype.job = "学生";
+    Person.prototype.friends = ["张三", "李四"];
+    Person.prototype.sayName = function() {
+      console.log("姓名:" + this.name, "工作:" + this.job, "朋友: " + this.friends);
+    }
+
+    var person1 = new Person();
+    var person2 = new Person();
+
+    person2.name = "苏生";
+    person2.job = "教师";
+
+    // 问题所在
+    person1.friends.unshift("王二");
+
+    person1.sayName();
+    person2.sayName();
+
+    console.log("[person1 instanceof Object]: ", person1 instanceof Object);
+    console.log("[person1 instanceof Person]: ", person1 instanceof Person);
+    
+    console.log("[person2 instanceof Object]: ", person2 instanceof Object);
+    console.log("[person2 instanceof Person]: ", person2 instanceof Person);
+    
+    console.log("[Person原型链的构造函数]: ", Person.prototype.constructor);
+    console.log("判断Person原型链的构造函数是否可枚举: ", Person.prototype.propertyIsEnumerable("constructor"));
+    console.log("[Person原型链的构造函数 === function Person() {}]: ", Person.prototype.constructor === Person);
+    
+    /*
+     * 优点: 所有属性被共享, 这种共享对函数非常合适
+     * 缺点:
+        在原型中共享里，基本值的属性是勉强可以的（实例属性可以屏蔽原型属性）;但是引用类型值，就是出现问题；
+        因为实例对象A和实例对象B的引用都是指向同一个地址；
+     */
+  </script>
+</body>
+</html>

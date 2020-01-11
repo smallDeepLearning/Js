@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>工厂模式</title>
+</head>
+<body>
+  <script type="text/javascript">
+    "use strict";
+    function createPerson(name, job) {
+      var o = new Object();
+      o.name = name;
+      o.job = job;
+      o.sayName = function() {
+        console.log("姓名:" + this.name, "工作:" + this.job);
+      }
+      return o
+    }
+
+    var person1 = createPerson("小明", "学生");
+    var person2 = createPerson("苏生", "教师");
+
+    person1.sayName();
+    person2.sayName();
+
+    console.log("[person1 instanceof Object]: ", person1 instanceof Object);
+    // console.log("[person1 instanceof Person]: ", person1 instanceof Person);
+    
+    console.log("[person2 instanceof Object]: ", person2 instanceof Object);
+    // console.log("[person2 instanceof Person]: ", person2 instanceof Person);
+
+    /*
+     * 优点: 工厂模式解决了创建多个相似对象的问题
+     * 缺点: 工厂模式没有解决对象识别问题，即不能知道一个对象的类型
+     */
+  </script>
+</body>
+</html>

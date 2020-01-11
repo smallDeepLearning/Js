@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>构造函数模式</title>
+</head>
+<body>
+  <script type="text/javascript">
+    "use strict";
+    function Person(name, job) {
+      this.name = name;
+      this.job = job;
+      this.sayName = function() {
+        console.log("姓名:" + this.name, "教师:" + this.job);
+      }
+    }
+
+    var person1 = new Person("小明", "学生");
+    var person2 = new Person("苏生", "教师");
+
+    person1.sayName();
+    person2.sayName();
+    
+    console.log("[person1 instanceof Object]: ", person1 instanceof Object);
+    console.log("[person1 instanceof Person]: ", person1 instanceof Person);
+    
+    console.log("[person2 instanceof Object]: ", person2 instanceof Object);
+    console.log("[person2 instanceof Person]: ", person2 instanceof Person);
+    /*
+     * 优点: 可以检测对象的类型
+     * 缺点: 但是使用构造函数创建对象，每个方法都要在每个实例上重新创建一次（）
+     */
+  </script>
+</body>
+</html>

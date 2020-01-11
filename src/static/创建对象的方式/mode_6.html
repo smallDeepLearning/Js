@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>寄生构造函数模式</title>
+</head>
+<body>
+  <script type="text/javascript">
+    "use strict";
+    // 思想就是创建一个函数，该函数的作用在于封装创建对象的代码，然后再返回新建的对象
+    function Person(name, job) {
+      var o = new Object();
+      o.name = name;
+      o.job = job;
+      o.sayName = function() {
+        console.log("姓名:" + this.name, "工作:" + this.job);
+      }
+      return o;
+    }
+
+    var person1 = new Person("小明", "学生");
+
+    person1.sayName();
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组合使用构造函数模式和原型模式</title>
+</head>
+<body>
+  <script type="text/javascript">
+    "use strict";
+    function Person(name) {
+      this.name = name;
+      this.friends = ["张三", "李四"];
+    }
+    Person.prototype.sayName = function() {
+      console.log("姓名:" + this.name, "朋友:" + this.friends);
+    }
+
+    var person1 = new Person("小明");
+    var person2 = new Person("小朋");
+
+    person1.friends.unshift("王二");
+
+    person1.sayName();
+    person2.sayName();
+
+    console.log("朋友是否相同:", person1.friends === person2.friends);
+
+    console.log("[Person原型链的构造函数]: ", Person.prototype.constructor);
+    // 当检测属性是自有属性并且可枚举的时候才会返回true
+    console.log("判断Person原型链的构造函数是否可枚举: ", Person.prototype.propertyIsEnumerable("constructor"));
+    console.log("[Person原型链的构造函数 === function Person() {}]: ", Person.prototype.constructor === Person);
+
+    /*
+     * 优点:
+     *  这是使用最为广泛、认同度最高的一种创建自定义类型的方法；解决了上面那些模式的缺点
+     *  使用此模式可以让每个实例都会有自己的一份实例属性副本，但是同时又共享着对方的引用
+     */
+  </script>
+</body>
+</html>
