@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>寄生构造函数模式</title>
+  <title>稳妥构造函数模式</title>
 </head>
 <body>
   <script type="text/javascript">
@@ -15,20 +15,23 @@
       o.name = name;
       o.job = job;
       o.sayName = function() {
-        console.log("姓名:" + this.name, "工作:" + this.job);
+        console.log("姓名:" + name, "工作:" + job);
       }
       return o;
     }
 
-    var person1 = new Person("小明", "学生");
+    var person1 = Person("小明", "学生");
 
     person1.sayName();
 
     console.log(person1 instanceof Person);
     console.log(person1 instanceof Object);
     /**
-     * 其实所谓的寄生构造函数模式就是比工厂模式在创建对象的时候，多使用了一个new，实际上结果是一样的 
-     */ 
+     * 所谓的稳妥构造函数模式，就是指的没有公共属性，而且其方法也不引用this的对象
+     * 与寄生构造函数模式有两点不同:
+     *    1. 新创建的实例方法不引用this
+     *    2. 不使用new操作符调用构造函数
+     */
   </script>
 </body>
 </html>
