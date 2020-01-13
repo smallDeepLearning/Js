@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>寄生组合式继承(1)</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function Parent (name) {
+      this.name = name;
+      this.colors = ['red', 'blue', 'green'];
+    }
+
+    Parent.prototype.getName = function () {
+      console.log("姓名: " + this.name)
+    }
+
+    function Child (name, age) {
+      Parent.call(this, name);
+      this.age = age;
+    }
+
+    var F = function() {}
+
+    F.prototype = Parent.prototype;
+    Child.prototype = new F();
+
+    var child1 = new Child("小明", "18");
+    console.log(child1);
+  </script>
+</body>
+</html>

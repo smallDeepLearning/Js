@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原型式继承(1)</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function createObj(o) {
+      function F() {}
+      F.prototype = o;
+      return new F();
+    }
+
+    var person = {
+      name: "kevin",
+      friends: ["张三", "李四"]
+    }
+
+    var person1 = createObj(person);
+    var person2 = createObj(person);
+
+    person1.name = "小明";
+    person2.name = "苏生";
+
+    console.log("姓名: " + person1.name);
+    console.log("姓名: " + person2.name);
+
+    person1.friends.push("周五");
+  
+    console.log("朋友圈: " + person1.friends);
+    console.log("朋友圈: " + person2.friends);
+
+    /**
+     * 思想: 利用ES5 Object.create的模拟实现，将传入的对象作为创建的对象的原型
+     * 缺点: 包含引用类型的属性值始终都会共享相应的值，这点跟原型链继承一样！
+     */
+  </script>
+</body>
+</html>

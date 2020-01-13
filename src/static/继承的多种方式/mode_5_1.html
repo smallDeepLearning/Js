@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>寄生式继承(1)</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function createObj(o) {
+      var clone = Object.create(o);
+      clone.sayName = function() {
+        console.log("姓名: " + this.name);
+      }
+      clone.sayFriends = function() {
+        console.log("朋友圈: " + this.friends);
+      }
+      return clone;
+    }
+
+    var xiaoming = createObj({name: "小明", friends: ["张三", "李四"]});
+    var susheng = createObj({name: "苏生", friends: ["张三", "李四"]});
+
+    xiaoming.sayName();
+    susheng.sayName();
+
+    xiaoming.friends.push("周五");
+    susheng.friends.unshift("王二");
+
+    xiaoming.sayFriends();
+    susheng.sayFriends();
+    /*
+     * 思想: 创建一个仅用于封装过程的函数，该函数在内部以某种形式来做增强对象，最后返回对象
+     * 缺点: 跟借用构造函数模式一样，每次创建对象都会创建一遍方法
+     */
+  </script>
+</body>
+</html>
