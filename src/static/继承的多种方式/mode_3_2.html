@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>组合继承(2)</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function Parent(name) {
+      console.log("父类调用");
+      this.name = name;
+      this.colors = ["red", "blue", "green"];
+    }
+
+    Parent.prototype.getName = function() {
+      console.log("姓名:", this.name);
+    }
+
+    function Child(name, age) {
+      Parent.call(this, name);
+      this.age = age;
+    }
+
+    Child.prototype = new Parent();
+
+    var child_1 = new Child("小明", "18");
+    console.log(child_1);
+    child_1.getName();
+    /**
+     * 问题: 两次调用父构造函数
+     * 一次是设置子类型实例的原型的时候: Child.prototype = new Parent();
+     * 一次在创建子类型实例的时候: var child1 = new Child('kevin', '18');
+     */
+    console.log(child_1.__proto__);
+    console.log(child_1.__proto__.constructor);
+
+    console.log(Child.prototype);
+    console.log(Child.prototype.constructor);
+
+
+  </script>
+</body>
+</html>

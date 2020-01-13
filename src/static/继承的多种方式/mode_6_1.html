@@ -9,6 +9,7 @@
 <body>
   <script type="text/javascript">
     function Parent (name) {
+      console.log("调用父类");
       this.name = name;
       this.colors = ['red', 'blue', 'green'];
     }
@@ -29,6 +30,8 @@
 
     var child1 = new Child("小明", "18");
     console.log(child1);
+
+    // 在这里我们不使用Child.prototype = new Parent()，而是间接的让Child.prototype访问到Parent.prototype
   </script>
 </body>
 </html>
