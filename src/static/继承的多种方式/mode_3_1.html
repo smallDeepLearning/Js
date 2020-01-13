@@ -24,6 +24,7 @@
     }
 
     Child.prototype = new Parent();
+    // 确定指向Child的构造函数
     Child.prototype.constructor = Child;
 
     var child1 = new Child("kevin", "18");
