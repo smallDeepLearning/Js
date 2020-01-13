@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>从原型到原型链(5)</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function Person() {
+    }
+
+    var person = new Person();
+
+    // 顺便学习一个ES5的方法,可以获得对象的原型
+    // console.log(Object.getPrototypeOf(person) === Person.prototype) true
+    console.log(person.__proto__); // Object
+    console.log(person.constructor); // Parent()
+
+    console.log(person.__proto__.__proto__); // Object
+    console.log(person.__proto__.constructor); // Parent()
+
+    console.log(person.__proto__.__proto__.__proto__); // Null
+    console.log(person.__proto__.__proto__.constructor); // Object()
+
+    console.log(person.__proto__.__proto__.constructor.prototype); // Object
+    console.log(person.__proto__.__proto__.constructor.prototype.constructor); // Object()
+
+    console.log(Person.prototype)
+  </script>
+</body>
+</html>

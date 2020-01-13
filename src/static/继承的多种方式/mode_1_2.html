@@ -27,6 +27,26 @@
     console.log(child_2.mark, child_2.names);
     
     // 缺点: 引用类型的属性被所有实例共享
+    console.log("[对象child_1的原型]: ", child_1.__proto__);
+    console.log("[对象child_2的原型]: ", child_2.__proto__);
+    console.log("[Child实例对象的原型]: ", Child.prototype);
+
+    console.log(child_1.__proto__ === Child.prototype, Child.prototype); // new Parent()
+    console.log(child_1.__proto__.__proto__ === Child.prototype.__proto__, Child.prototype.__proto__); // {constructor: Parent()}
+    console.log(child_1.__proto__.__proto__.__proto__ === Child.prototype.__proto__.__proto__, Child.prototype.__proto__.__proto__); // Object
+    console.log(child_1.__proto__.__proto__.__proto__.__proto__ === Child.prototype.__proto__.__proto__.__proto__, Child.prototype.__proto__.__proto__.__proto__); // Null
+    
+    console.log(child_1.constructor);
+    console.log(child_1.__proto__.constructor);
+    console.log(child_1.__proto__.__proto__.constructor);
+    console.log(child_1.__proto__.__proto__.__proto__.constructor);
+
+    console.log(child_1.__proto__.__proto__.__proto__.constructor.prototype);
+    // 循环
+    console.log(child_1.__proto__.__proto__.__proto__.constructor.prototype.__proto__);
+    console.log(child_1.__proto__.__proto__.__proto__.constructor.prototype.constructor);
+    // console.log("[对象child_1的构造函数]: ", child_1.constructor);
+    // console.log("[Person实例对象的原型的构造函数]: ", Parent.prototype.constructor);
   </script>
 </body>
 </html>

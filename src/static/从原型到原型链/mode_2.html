@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>从原型到原型链(2)</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function Person() {
+    }
+
+    // 虽然写在注释里，但是你要注意: prototype是函数才有的属性
+    // console.log(Person.prototype);
+    // console.log(JSON.stringify(Person.prototype)); --- {}
+
+    Person.prototype.mark = "人类";
+    var person1 = new Person();
+    var person2 = new Person();
+    console.log(person1.mark);
+    console.log(person2.mark);
+
+    // 函数的prototype属性指向了一个对象，这个对象正是调用该构造函数而创建的实例的原型
+    // 实例对象都会从原型"继承"属性
+    console.log("[Person实例对象的原型]: ", Person.prototype);
+  </script>
+</body>
+</html>
